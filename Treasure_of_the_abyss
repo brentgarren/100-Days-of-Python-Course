@@ -62,6 +62,7 @@ a8"    `Y88 a8P_____88 ""     `Y8   88    88P'    "8a
 "8a,   ,d88 "8b,   ,aa 88,    ,88   88,   88       88  
  `"8bbdP"Y8  `"Ybbd8"' `"8bbdP"Y8   "Y888 88       88 
           ''')
+    time.sleep(10)
     sys.exit()
 def monster():
     print(f'''
@@ -277,6 +278,7 @@ while guardian_health > 0:
     if player_health <= 0:
         print(f"You died fighting the monster")
         print(f"Guardian Health: {guardian_health}\n\n\n\n\n\n")
+        time.sleep(10)
         death()
     clear_console()
     print('''
@@ -293,6 +295,9 @@ while guardian_health > 0:
     if xtra_luck < -3:
         xtra_luck += 6
         print(f'The entity in the heart of the abyss watches over you.')
+    if round_timer > 4:
+        print(f'Proximity to the heart has made you feel luckier')
+        xtra_luck +=1
     print(f"1. Attack!\n2. Dodge! ")
     choice = str(input(f"Make your decision: "))
     monster_roll = random.randint(0,11)
@@ -325,6 +330,11 @@ while guardian_health > 0:
         player_health -= 1
         if monster_roll >= 10:
             player_health -= 1
+    if monster_roll <= 4:
+        player_health += 1
+        if monster_roll <= 2:
+            player_health += 1
+            print(f'You feel healthier!')
 
     if monster_ability == 0:
         print(f'The monster readies an attack')
@@ -334,14 +344,14 @@ while guardian_health > 0:
             if (monster_roll - xtra_luck) > 5:
                 print(f"The monster grabs you by the neck and slams you to the ground")
                 player_health -= 1
-                xtra_luck -= 1
+                xtra_luck -= 2
                 print(f"You aren't sure how this will affect you going forward")
                 time.sleep(2)
-                if monster_roll >= 9:
+                if monster_roll >= 7:
                     player_health -= 2
                     guardian_health += 1
                     time.sleep(2)
-            if (monster_roll - xtra_luck) <= 4:
+            if (monster_roll - xtra_luck) <= 5:
                 print(f"The monster swipes at you but your agility causes the monster to graze you")
                 player_health += 1
                 if monster_roll <= 2:
@@ -357,26 +367,21 @@ while guardian_health > 0:
         if (monster_roll - xtra_luck) <= 4:
             guardian_health -= 1
             time.sleep(2)
-            if monster_roll == 1:
+            if monster_roll <= 2:
                 print(f'You strike a critical point!')
                 print(f"Feeling Lucky")
                 xtra_luck += 1
                 guardian_health -= 4
                 time.sleep(2)
-        if monster_roll - xtra_luck >= 4:
+        if monster_roll - xtra_luck >= 5:
             guardian_health += 1
             player_health -= 1
             time.sleep(2)
-            if monster_roll >= 9:
-                print(f'You missed your attack, angering the monster further!')
-                xtra_luck -= 2
-                guardian_health += 2
-                time.sleep(2)
-    if guardian_health <0:
-        break
-    if round_timer > 4:
-        print(f'Proximity to the heart has made you feel luckier')
-        xtra_luck +=1
+        if monster_roll >= 9:
+            print(f'You missed your attack, angering the monster further!')
+            xtra_luck -= 3
+            guardian_health += 2
+            time.sleep(2)
     round_timer += 1
 print(f'The Monster is Felled!')
 time.sleep(5)
@@ -388,6 +393,8 @@ while choice.lower() != "y" or choice.lower() != "n":
     if choice.lower() == "y":
         print(f"You claim the Heart, and immense power floods your body. However, its dark energy corrupts you, transforming you into a vessel for the ancient evil that once ruled the world.")
         monster()
+        print(f'You Win?')
     else:
         print(f"You walk away, knowing that no power is worth the cost of your soul. You escape the cave, having resisted the temptation, and return to the surface.")
-        print(f"You Win")
+        print(f"You Win!")
+
