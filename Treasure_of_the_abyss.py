@@ -120,6 +120,8 @@ def heart():
    `
     ''')
 ##Game
+xtra_luck = 0
+dum_luck = 0
 
 #Introduction
 treasure_map()
@@ -135,13 +137,19 @@ while choice != "1" and choice != "2":
     choice = str(input(f"Make your decision: "))
 if choice != "1":
     loading()
-    print("Game Over: You trip over loose stones and fall into a hidden pit, meeting an untimely end.")
-    death()
+    dum_luck += 1
+    skill_check = random.randint(0, 10)
+    if skill_check % 2 == 0:
+        print("Game Over: You trip over loose stones and fall into a hidden pit, meeting an untimely end.")
+        death()
+    else:
+        print(f"While its never the smartest idea to rush in blindly, this time it works out!")
+        if skill_check >= 5:
+            xtra_luck += 1
 loading()
 
 # The First Fork
 choice = ""
-xtra_luck = 0
 print(f"As you cautiously move deeper into the cave, you come to a fork in the path. One tunnel seems narrow but smooth, while the other is wide yet covered in strange, glowing moss.")
 while choice != "1" and choice != "2":
     print(f"1. Take the narrow path.\n2. Take the moss-covered path. ")
@@ -254,6 +262,8 @@ if choice == "1":
         print(f" You carefully make your way closer to the otherside")
         print("[]" * (distance + 2))
         time.sleep(2)
+        if luck <= 2:
+            dum_luck += 1
 if choice == "2":
     luck -= 1
     while distance > 0:
@@ -265,11 +275,13 @@ if choice == "2":
         print("You continue running across the bridge.")
         print("[]" * (distance + 2))
         xtra_luck += 1
+        if luck <= 2:
+            dum_luck += 2
         time.sleep(2)
 loading()
 print("You cross the bridge carefully and arrive at the final chamber. At the center lies the Heart of the Abyss, pulsing with dark energy. However, standing between you and the artifact is a guardian made of stone, its eyes glowing with ancient power.")
-guardian_health = 25 - xtra_luck
-player_health = 10 + xtra_luck
+guardian_health = 25 - xtra_luck - dum_luck
+player_health = 10 + xtra_luck + dum_luck
 monster()
 time.sleep(4)
 choice = 0
@@ -397,4 +409,3 @@ while choice.lower() != "y" or choice.lower() != "n":
     else:
         print(f"You walk away, knowing that no power is worth the cost of your soul. You escape the cave, having resisted the temptation, and return to the surface.")
         print(f"You Win!")
-
