@@ -5,10 +5,11 @@ is_true = False
 
 def encrypt():
     text = input("type your message here:\n".lower())
-    while allowed_shift == False:
-      shift = int(input("Type the shift number:\n"))
-      if shift >= 0 and shift <= 26:
-          shift_allowed = True
+    shift_allowed = False
+    while shift_allowed == False:  
+        shift = int(input("Type the shift number:\n"))
+        if shift >= 0 and shift <= 26:
+            shift_allowed = True
     encrypted_message = ""
     for char in text.lower():
         indexnum = alphabet.index(char)
@@ -20,11 +21,16 @@ def encrypt():
 def decrypt():
     decrypted_message = ""
     text = input("type your message here:\n".lower())
+    shift_allowed = False
+    while shift_allowed == False:  
+        shift = int(input("Type the shift number:\n"))
+        if shift >= 0 and shift <= 26:
+            shift_allowed = True
     shift = int(input("Type the shift number:\n"))
     for char in text:
         indexnum = int((alphabet.index(char)-shift))
-        if indexnum < 0:
-            indexnum = indexnum + 25
+        if indexnum <= 0:
+            indexnum = indexnum + 26
         decrypted_message += alphabet[indexnum]
     print(decrypted_message)
 
