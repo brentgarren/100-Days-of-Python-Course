@@ -34,12 +34,14 @@ def decrypt():
         decrypted_message += alphabet[indexnum]
     print(decrypted_message)
 
+###### Caeser Cipher ######
+
 while is_true == False:
-    direction = input("Please select a mode:\nEncode\nDecode\n".lower())
-    if direction == "encode":
+    direction = input("Please select a mode:\n1. Encode\n2. Decode\n".lower())
+    if direction == "encode" or direction == 1:
         encrypt()
         is_true = True
-    elif direction == "decode":
+    elif direction == "decode" or direction == 2:
         decrypt()
         is_true = True
     else: 
