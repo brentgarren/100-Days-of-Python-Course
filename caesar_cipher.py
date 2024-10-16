@@ -30,7 +30,7 @@ def decrypt():
             shift = int(input("Type the shift number:\n"))
             if shift >= 0 and shift <= 26:
                 shift_allowed = True
-    shift = int(input("Type the shift number:\n"))
+            shift = int(input("Type the shift number:\n"))
     for char in text:
         indexnum = int((alphabet.index(char)-shift))
         if indexnum <= 0:
