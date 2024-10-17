@@ -24,7 +24,7 @@ def clear_console():
 
 def get_message():
     output = str(input("Message: ")).replace(" ", "")
-    clear_console()
+
     return output
 def get_shift():
     shift = int(input("Type the shift number:\n"))
@@ -83,15 +83,18 @@ while True:
     clear_console()
     print(f"{logo}{name1}")
     direction = str(input("Please select a Mode:\n1. Encode\n2. Decode\n3. Bruteforce\n\nMode: ")).lower()
-    clear_console()    
+     
 
     if direction == "encode" or direction == "1":
+        clear_console()   
         encrypt(get_message())
         break
     elif direction == "decode" or direction == "2":
+        clear_console()   
         decrypt(get_message(), False, direction)
         break
     elif direction == "bruteforce" or direction == "3":
+        clear_console()   
         bruteforce(get_message(), direction)
         break
     else: 
