@@ -1,15 +1,26 @@
+import platform
+import os
+
 alphabet = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-indexnum = ""
+def clear_console():
+    if platform.system() == "Windows":
+        os.system('cls')
 
 def get_message():
-   return str(input("Message: "))
+    output = str(input("Message: "))
+    clear_console()
+    return output
+def get_shift():
+    shift = int(input("Type the shift number:\n"))
+    clear_console()
+    return shift
 
 
 def encrypt(text):
     shift_allowed = False
     while shift_allowed == False:  
-        shift = int(input("Type the shift number:\n"))
+        shift = get_shift()
         if shift >= 0 and shift <= 26:
             shift_allowed = True
     encrypted_message = ""
@@ -22,15 +33,15 @@ def encrypt(text):
     print(encrypted_message)    
     return encrypted_message
         
-def decrypt(text, brute_shift, direction):
+def decrypt(text, brute_shift, direction=0):
     shift_allowed = True
     direction = str(direction)
     decrypted_message = ""
     if direction == "decode" or direction == "2":
         shift_allowed = False
-    if direction != "bruteforce" or direction != "3":
+    if not brute_shift:
         while shift_allowed == False:  
-            brute_shift = int(input("Type the shift number:\n"))
+            brute_shift = get_shift()
             if brute_shift >= 0 and brute_shift <= 26:
                 shift_allowed = True
 
@@ -51,19 +62,21 @@ def bruteforce(text, direction):
 
 ###### Caeser Cipher ######
 
+# Look up match case statements
+
 while True:
+    clear_console()
     direction = str(input("Please select a mode:\n1. Encode\n2. Decode\n3. Bruteforce\n".lower()))
+    clear_console()    
+
     if direction == "encode" or direction == "1":
         encrypt(get_message())
         break
     elif direction == "decode" or direction == "2":
-        decrypt(get_message())
+        decrypt(get_message(), False, direction)
         break
     elif direction == "bruteforce" or direction == "3":
         bruteforce(get_message(), direction)
         break
     else: 
         print(f"Incorrect option!")
-
-
-   
