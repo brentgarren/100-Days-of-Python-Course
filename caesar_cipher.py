@@ -24,8 +24,9 @@ def clear_console():
 
 def get_message():
     output = str(input("Message: ")).replace(" ", "")
-
+    clear_console()  
     return output
+
 def get_shift():
     shift = int(input("Type the shift number:\n"))
     clear_console()
@@ -70,7 +71,6 @@ def decrypt(text, brute_shift, direction=0):
 
 def bruteforce(text, direction):
     brute_shift = 0
-
     for num in range(1,26):
         brute_shift += 1
         decrypt(text, brute_shift, direction)
@@ -78,15 +78,16 @@ def bruteforce(text, direction):
 ###### Caeser Cipher ######
 
 # Look up match case statements
-
+clear_console()
+badoption = False
+print(f"{logo}{name1}")
 while True:
-    clear_console()
-    print(f"{logo}{name1}")
+    if badoption == True:
+        print(f"Incorrect Option")
     direction = str(input("Please select a Mode:\n1. Encode\n2. Decode\n3. Bruteforce\n\nMode: ")).lower()
-     
+    clear_console()   
 
-    if direction == "encode" or direction == "1":
-        clear_console()   
+    if direction == "encode" or direction == "1": 
         encrypt(get_message())
         break
     elif direction == "decode" or direction == "2":
@@ -98,4 +99,6 @@ while True:
         bruteforce(get_message(), direction)
         break
     else: 
-        print(f"Incorrect option!")
+        clear_console
+        print(f"{logo}{name1}")
+        badoption = True
