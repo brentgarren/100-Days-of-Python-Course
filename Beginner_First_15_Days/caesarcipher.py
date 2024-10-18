@@ -21,6 +21,9 @@ alphabet = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n
 def clear_console():
     if platform.system() == "Windows":
         os.system('cls')
+    else: 
+        os.system('clear')
+
 
 def get_message():
     output = str(input("Message: ")).replace(" ", "")

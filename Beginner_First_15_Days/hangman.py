@@ -9,6 +9,7 @@ def clear_console():
         os.system('cls')
     else: 
         os.system('clear')
+        
 def list_letters(letters):
     global lives
     global choice

@@ -1,6 +1,8 @@
 import platform
 import os
 
+### Functions
+
 def get_name():
     return str(input(f"Welcome to the secret auction program.\nWhat is your name?: "))
 
@@ -20,10 +22,15 @@ def add_bid(name, bid):
 def clear_console():
     if platform.system() == "Windows":
         os.system('cls')
-
+    else: 
+        os.system('clear')
+### Variables
 list_of_bids = {}
 max_bidder = "No Bidder"
 max_bid = 0
+
+
+### Silent Auction
 
 while True:
     name = get_name()

@@ -1,4 +1,5 @@
 from levels import stages
+from functions import *
 
 def start(level, prompt):
     print(stages[level][prompt])
