@@ -402,7 +402,7 @@ print(f"With the guardian defeated, you approach the Heart of the Abyss. As you 
 choice =""
 while choice.lower() != "y" or choice.lower() != "n": 
     choice = str(input(f"Do you accept it? Yes or No: "))
-    if choice.lower() == "y":
+    if choice.lower() == "yes":
         print(f"You claim the Heart, and immense power floods your body. However, its dark energy corrupts you, transforming you into a vessel for the ancient evil that once ruled the world.")
         monster()
         print(f'You Win?')

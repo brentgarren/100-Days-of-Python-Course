@@ -118,9 +118,8 @@ while game_over == False:
             display += letter
         else:
             display += "_"
-
     clear_console()
-
+    
     if "_" not in display:
         clear_console()
         print(HANGMAN[lives])
@@ -134,4 +133,4 @@ while game_over == False:
         print(guessed_letters)
         game_over = True
         print(f"You lose!")
-        print(f"The correct word was: {correct_word}")  
+        print(f"The correct word was: {correct_word}")
