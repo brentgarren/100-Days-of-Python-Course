@@ -13,12 +13,16 @@ difficulty_select = False
 correct_number = random.randint(1,100)
 guess = ""
 
+DIFFICULTY_HARD = 5
+DIFFICULTY_EASY = 10
+
 
 def gameplay(difficulty):
     if difficulty == 'easy':
-        return 10
+        return DIFFICULTY_EASY
     if difficulty == 'hard':
-        return 5
+        return DIFFICULTY_HARD
+    return 0
 
 print(logo)
 
@@ -44,5 +48,5 @@ while game_over == False:
     else:
         print("enter a valid number!")
     if attempts == 0:
-        print(f"You losee the correct number was {correct_number}")    
+        print(f"You lose the correct number was {correct_number}")    
         break
