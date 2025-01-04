@@ -1,3 +1,6 @@
+import os
+import platform
+
 MENU = {
     "espresso": {
         "ingredients": {
@@ -24,31 +27,137 @@ MENU = {
         "cost": 3.0,
     }
 }
-#variables
-run_machine = True
-drink = ""
-#functions
-
-def check_drink():
-    drink = ""
-    while drink not in MENU:
-        drink = input(f"What would you like? (espresso/latte/cappuccino):").lower()
-        if drink == "off":
-            print(f"Turning of machine.")
-            run_machine = False
-            return drink
-        #elif drink not in MENU:
-            #print(f"{drink} is not on the Menu\nPlease Enter a drink on the menu.")
-        #else:
-            #return drink
 
 resources = {
     "water": 300,
     "milk": 200,
     "coffee": 100,
+    "money": 0,
 }
 
-while run_machine == True:
-    check_drink()
-    if drink == "off"
-        print("Broken")
+#variables
+run_machine = True
+drink = ""
+
+#functions
+def clear_console():
+    if platform.system() == "Windows":
+        os.system('cls')
+    else: 
+        os.system('clear')
+
+def what_drink():
+    drink = ""
+    try:
+        while drink not in MENU:
+            drink = input("What would you like? (espresso/latte/cappuccino): ").lower()
+            if drink == "off":
+                print("Turning off machine.")
+                return drink  # Return "off" to signal the machine should stop
+            if drink == "report":
+                print("Running report.")
+                return drink  # Return "off" to signal the machine should stop
+            elif drink not in MENU:
+                print(f"{drink} is not on the menu.\nPlease enter a drink on the menu.")
+        return drink  # Returns the selected drink
+    except ValueError:
+        print(f"Invalid input. Please enter a valid number selection.")
+
+
+def check_drink(drink):
+        clear_console()
+        if drink == "off":
+            return False
+        elif drink == "report":
+            for resource, amount in resources.items():
+                if resource == "water":
+                    print(f"{resource.capitalize()}: {amount}ml")
+                elif resource == "milk":
+                    print(f"{resource.capitalize()}: {amount}ml")
+                elif resource == "coffee":
+                    print(f"{resource.capitalize()}: {amount}g")
+                elif resource == "money":
+                    print(f"{resource}: ${amount:.2f}")
+            return False
+        else:
+            return True
+
+def check_resources(drink):
+    for ingredient, required_amount in MENU[drink]["ingredients"].items():
+        if required_amount > resources.get(ingredient, 0):
+            print(f"Sorry, there is not enough {ingredient}.")
+            return False
+        return True
+
+def make_drink(drink):
+    for ingredient, required_amount in MENU[drink]["ingredients"].items():
+        resources[ingredient] -= required_amount
+    print(f"{drink.capitalize()} is ready to be paid for!") 
+
+def pay_for_drink(drink):
+    cost = MENU[drink]["cost"]
+    original_cost = MENU[drink]["cost"]
+    print(f"Your drink costs ${cost}")
+    while cost > 0:
+        try:
+            quarters = int(input(f"Insert Quarters: "))
+            cost -= (quarters * .25)
+            if cost <= 0:
+                break
+        except ValueError:
+            print(f"Invalid input. Please enter a valid number of coins.") 
+        try:
+            dimes = int(input(f"Insert Dimes: "))
+            cost -= (dimes * .10)
+            if cost <= 0:
+                break        
+        except ValueError:
+            print(f"Invalid input. Please enter a valid number of coins.")
+        try:    
+            nickels = int(input(f"Insert Nickels: "))
+            cost -= (nickels * .05)
+            if cost <= 0:
+                break
+        except ValueError:
+            print(f"Invalid input. Please enter a valid number of coins.")
+        try:    
+            pennies = int(input(f"Insert Pennies: "))
+            cost -= (pennies * .01)
+            if cost <= 0:
+                break
+        except ValueError:
+            print(f"Invalid input. Please enter a valid number of coins.")        
+
+            if cost > 0:
+                print(f"You still owe {cost:.2f}")
+                try:
+                    cancel = str(input(f"Cancel Order?: Y / N:\n"))
+                    if cancel.lower() == "y":
+                        clear_console()
+                        break
+                except ValueError:
+                    print(f"Invalid input. Please enter a valid selection.") 
+        resources["money"] += original_cost
+        clear_console()
+        make_drink(drink)
+        print(f"Your change is {abs(cost:.2f)})")
+        print(f"Your {drink} is now ready!")
+
+
+#<----Program starts here ---->
+while run_machine:
+    drink = what_drink()
+    if drink == "off":
+        run_machine = False
+    if check_drink(drink):
+        if not check_resources(drink):
+            print(f"You cannot make this drink.")
+        else:
+            pay_for_drink(drink)
+     
+
+                      
+            
+
+
+    
