@@ -53,10 +53,12 @@ def what_drink():
     while drink not in MENU:
             drink = input(f"What would you like? ({options}): ").lower()
             if drink == "off":
-                print("Turning off machine.")
+                print("Turning off machine...")
+                time.sleep(5)
                 return drink  # Return "off" to signal the machine should stop
             if drink == "report":
-                print("Running report.")
+                print("Running report...")
+                time.sleep(5)
                 return drink  # Return "report" to signal the machine should start running a report
             else:
                 print(f"{drink} is not on the menu.\nPlease enter a drink on the menu.")
