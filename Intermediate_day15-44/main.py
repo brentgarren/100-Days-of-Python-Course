@@ -1,5 +1,6 @@
 import os
 import platform
+import time
 
 MENU = {
     "espresso": {
@@ -48,20 +49,21 @@ def clear_console():
 
 def what_drink():
     drink = ""
+    options = "/".join(MENU.keys())
     try:
-        while drink not in MENU:
-            drink = input("What would you like? (espresso/latte/cappuccino): ").lower()
-            if drink == "off":
-                print("Turning off machine.")
-                return drink  # Return "off" to signal the machine should stop
-            if drink == "report":
-                print("Running report.")
-                return drink  # Return "off" to signal the machine should stop
-            elif drink not in MENU:
-                print(f"{drink} is not on the menu.\nPlease enter a drink on the menu.")
-        return drink  # Returns the selected drink
+        drink = input(f"What would you like? ({options}): ").lower()
+        if drink == "off":
+            print("Turning off machine.")
+            return drink  # Return "off" to signal the machine should stop
+        if drink == "report":
+            print("Running report.")
+            return drink  # Return "off" to signal the machine should stop
+        elif drink not in MENU:
+            print(f"{drink} is not on the menu.\nPlease enter a drink on the menu.")
     except ValueError:
-        print(f"Invalid input. Please enter a valid number selection.")
+        print(f"Invalid input. Please enter a valid selection.")
+
+    return drink  # Returns the selected drink
 
 
 def check_drink(drink):
@@ -92,8 +94,7 @@ def check_resources(drink):
 def make_drink(drink):
     for ingredient, required_amount in MENU[drink]["ingredients"].items():
         resources[ingredient] -= required_amount
-    print(f"{drink.capitalize()} is ready to be paid for!") 
-
+     
 def pay_for_drink(drink):
     cost = MENU[drink]["cost"]
     original_cost = MENU[drink]["cost"]
@@ -102,29 +103,24 @@ def pay_for_drink(drink):
         try:
             quarters = int(input(f"Insert Quarters: "))
             cost -= (quarters * .25)
-            if cost <= 0:
-                break
         except ValueError:
             print(f"Invalid input. Please enter a valid number of coins.") 
+
         try:
             dimes = int(input(f"Insert Dimes: "))
             cost -= (dimes * .10)
-            if cost <= 0:
-                break        
         except ValueError:
             print(f"Invalid input. Please enter a valid number of coins.")
+
         try:    
             nickels = int(input(f"Insert Nickels: "))
             cost -= (nickels * .05)
-            if cost <= 0:
-                break
         except ValueError:
             print(f"Invalid input. Please enter a valid number of coins.")
+
         try:    
             pennies = int(input(f"Insert Pennies: "))
             cost -= (pennies * .01)
-            if cost <= 0:
-                break
         except ValueError:
             print(f"Invalid input. Please enter a valid number of coins.")        
 
@@ -140,8 +136,9 @@ def pay_for_drink(drink):
         resources["money"] += original_cost
         clear_console()
         make_drink(drink)
-        print(f"Your change is {abs(cost:.2f)})")
+        print(f"Your change is ${abs(cost):.2f}")
         print(f"Your {drink} is now ready!")
+        break
 
 
 #<----Program starts here ---->
@@ -154,7 +151,8 @@ while run_machine:
             print(f"You cannot make this drink.")
         else:
             pay_for_drink(drink)
-     
+            time.sleep(10)
+
 
                       
             
