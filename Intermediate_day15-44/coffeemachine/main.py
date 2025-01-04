@@ -50,18 +50,16 @@ def clear_console():
 def what_drink():
     drink = ""
     options = "/".join(MENU.keys())
-    try:
-        drink = input(f"What would you like? ({options}): ").lower()
-        if drink == "off":
-            print("Turning off machine.")
-            return drink  # Return "off" to signal the machine should stop
-        if drink == "report":
-            print("Running report.")
-            return drink  # Return "off" to signal the machine should stop
-        elif drink not in MENU:
-            print(f"{drink} is not on the menu.\nPlease enter a drink on the menu.")
-    except ValueError:
-        print(f"Invalid input. Please enter a valid selection.")
+    while drink not in MENU:
+            drink = input(f"What would you like? ({options}): ").lower()
+            if drink == "off":
+                print("Turning off machine.")
+                return drink  # Return "off" to signal the machine should stop
+            if drink == "report":
+                print("Running report.")
+                return drink  # Return "report" to signal the machine should start running a report
+            else:
+                print(f"{drink} is not on the menu.\nPlease enter a drink on the menu.")
 
     return drink  # Returns the selected drink
 
