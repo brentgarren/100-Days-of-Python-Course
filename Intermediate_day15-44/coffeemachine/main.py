@@ -51,40 +51,39 @@ def what_drink():
     drink = ""
     options = "/".join(MENU.keys())
     while drink not in MENU:
-            drink = input(f"What would you like? ({options}): ").lower()
-            if drink == "off":
-                print("Turning off machine...")
-                time.sleep(5)
-                return drink  # Return "off" to signal the machine should stop
-            if drink == "report":
-                print("Running report...")
-                time.sleep(5)
-                return drink  # Return "report" to signal the machine should start running a report
-            else:
-                print(f"{drink} is not on the menu.\nPlease enter a drink on the menu.")
-                time.sleep(3)
-                clear_console()
-
+        drink = input(f"What would you like? ({options}): ").lower()
+        if drink == "off":
+            print("Turning off machine...")
+            time.sleep(5)
+            return drink  # Return "off" to signal the machine should stop
+        if drink == "report":
+            print("Running report...")
+            time.sleep(5)
+            return drink  # Return "report" to signal the machine should start running a report
+        else:
+            print(f"{drink} is not on the menu.\nPlease enter a drink on the menu.")
+            time.sleep(3)
+            clear_console()
     return drink  # Returns the selected drink
 
 
 def check_drink(drink):
-        clear_console()
-        if drink == "off":
-            return False
-        elif drink == "report":
-            for resource, amount in resources.items():
-                if resource == "water":
-                    print(f"{resource.capitalize()}: {amount}ml")
-                elif resource == "milk":
-                    print(f"{resource.capitalize()}: {amount}ml")
-                elif resource == "coffee":
-                    print(f"{resource.capitalize()}: {amount}g")
-                elif resource == "money":
-                    print(f"{resource}: ${amount:.2f}")
-            return False
-        else:
-            return True
+    clear_console()
+    if drink == "off":
+        return False
+    elif drink == "report":
+        for resource, amount in resources.items():
+            if resource == "water":
+                print(f"{resource.capitalize()}: {amount}ml")
+            elif resource == "milk":
+                print(f"{resource.capitalize()}: {amount}ml")
+            elif resource == "coffee":
+                print(f"{resource.capitalize()}: {amount}g")
+            elif resource == "money":
+                print(f"{resource}: ${amount:.2f}")
+        return False
+    else:
+        return True
 
 def check_resources(drink):
     for ingredient, required_amount in MENU[drink]["ingredients"].items():
