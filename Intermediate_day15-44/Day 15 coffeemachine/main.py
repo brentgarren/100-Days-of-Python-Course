@@ -60,6 +60,8 @@ def what_drink():
             print("Running report...")
             time.sleep(5)
             return drink  # Return "report" to signal the machine should start running a report
+        if drink in MENU:
+            break
         else:
             print(f"{drink} is not on the menu.\nPlease enter a drink on the menu.")
             time.sleep(3)
