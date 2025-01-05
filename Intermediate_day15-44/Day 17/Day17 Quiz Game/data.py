@@ -1,14 +1,122 @@
 question_data = [
-{"text": "A slug's blood is green.", "answer": "True"},
-{"text": "The loudest animal is the African Elephant.", "answer": "False"},
-{"text": "Approximately one quarter of human bones are in the feet.", "answer": "True"},
-{"text": "The total surface area of a human lungs is the size of a football pitch.", "answer": "True"},
-{"text": "In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.", "answer": "True"},
-{"text": "In London, UK, if you happen to die in the House of Parliament, you are entitled to a state funeral.", "answer": "False"},
-{"text": "It is illegal to pee in the Ocean in Portugal.", "answer": "True"},
-{"text": "You can lead a cow down stairs but not up stairs.", "answer": "False"},
-{"text": "Google was originally called 'Backrub'.", "answer": "True"},
-{"text": "Buzz Aldrin's mother's maiden name was 'Moon'.", "answer": "True"},
-{"text": "No piece of square dry paper can be folded in half more than 7 times.", "answer": "False"},
-{"text": "A few ounces of chocolate can to kill a small dog.", "answer": "True"}
-]
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "In Kingdom Hearts the Paopu fruit is said to intertwine the destinies for two people forever.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "hard",
+      "category": "Entertainment: Video Games",
+      "question": "In \"Minecraft\", gold tools are faster than diamond tools.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "Entertainment: Video Games",
+      "question": "In the video game \"Transistor\", \"Red\" is the name of the main character.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "Entertainment: Video Games",
+      "question": "In the Resident Evil series, Leon S. Kennedy is a member of STARS.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "Several characters in \"Super Mario 64\" blink their eyes, including Mario himself.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "In Splatoon, the Squid Sisters are named Tako and Yaki.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "Entertainment: Video Games",
+      "question": "Resident Evil 4 was originally meant to be a Nintendo GameCube exclusive.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "Entertainment: Video Games",
+      "question": "In the Season One Championship of \"League of Legends\", the highest achievable rank was Diamond.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "In the game Dead by Daylight, the killer Michael Myers is referred to as \"The Shape\".",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "Nintendo's Luigi was originally just called Green Mario?",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "The 2005 video game \"Call of Duty 2: Big Red One\" is not available on PC.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "In Terraria, you can craft the Cell Phone pre-hardmode.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "Entertainment: Video Games",
+      "question": "Minecraft wasn’t the original name to Minecraft.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "Entertainment: Video Games",
+      "question": "Doki Doki Literature Club was developed in Japan.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "Entertainment: Video Games",
+      "question": "Tony Hawk's Pro Skater was released in 1999.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    }
+  ]
