@@ -28,7 +28,6 @@ class Move:
     
         
     
-    
 etch = Turtle()
 # etch.hideturtle()
 screen = Screen()
