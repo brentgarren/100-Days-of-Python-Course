@@ -41,12 +41,19 @@ line_drawer.penup()
 line_drawer.goto(175, -200)
 line_drawer.pendown()
 line_drawer.goto(175, 200)
+score = 0
+games_played =0
+
 
 draw_checkered_finish_line()
 
 while game_on:
     
     if race == False:
+        for racer in turtle_racers:
+            racer.clear()
+            racer.home()
+            racer.hideturtle()
         turtle_racers = []
         y_pos= -150
 
@@ -68,13 +75,20 @@ while game_on:
             if racer.xcor() >= 175:
                 race = False
                 winner = racer.color()[0]
+                games_played += 1
 
     if winner == pick:
-        pick = screen.textinput(title="Results!", prompt=f"The winner was {winner} \n You picked correctly, Wanna play again? Yes/No")
-    else:
-        pick = screen.textinput(title="Results!", prompt=f"The winner was {winner} \n You picked {pick}, Wanna play again? Yes/No")
-
-    if pick.lower() == "no" or pick == None:
-        game_on = False
+        score += 1
+        pick = screen.textinput(title="Results!", prompt=f"The winner was {winner} \n You picked correctly, Wanna play again? Yes/No\n{score}/{games_played}")
         
+    else:
+        pick = screen.textinput(title="Results!", prompt=f"The winner was {winner} \n You picked {pick}, Wanna play again? Yes/No\n{score}/{games_played}")
+
+    if pick == None: 
+        game_on = False
+    if pick.lower() == 'no':
+        game_on == False
+
+
+screen.bye()        
 screen.exitonclick()
