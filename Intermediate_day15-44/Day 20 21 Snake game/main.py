@@ -30,15 +30,23 @@ while game_running:
     screen.onkeypress(snake.right,"Right")
     screen.update()
     time.sleep(0.1)
-    snake.move()
+    if not snake.move():
+        scoreboard.game_over()
     
     #detect collision with food
     if snake.head.distance(food) < 15:
-        print("nom")
         food.refresh()
-        scoreboard.increase_Score()
+        snake.extend()
+        scoreboard.increase_score()
+        
+    #Detect collision with tail.
+    for segment in snake.segments:
+        if segment == snake.head:
+            pass
+        elif snake.head.distance(segment) < 10:
+            scoreboard.game_over()
     
-    
+scoreboard.game_over()   
 
 
 
