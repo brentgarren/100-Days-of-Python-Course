@@ -12,7 +12,7 @@ class Left_Scoreboard(Turtle):
         self.hideturtle()
         self.penup()
         self.color("white")
-        self.goto(-100,200)
+        self.goto(-100,265)
         self.update_scoreboard()
     
     def update_scoreboard(self):
@@ -33,7 +33,7 @@ class Right_Scoreboard(Turtle):
         self.hideturtle()
         self.penup()
         self.color("white")
-        self.goto(100,265)
+        self.goto(100,200)
         self.update_scoreboard()
     
     def update_scoreboard(self):
