@@ -1,0 +1,18 @@
+Left Paddle
+Right Paddle
+Controls using w and s and up and down
+made with 3 turtles
+moving along the Y axis
+
+
+Scoreboard class
+track score between Player 1 and Player 2
+
+A border around the screen
+
+unsure how to make it bounce, something like absolut heading maybe on contact
+exaple 90 becomes -90
+
+ball that moves forward at a constant rate
+
+dashed line down middle of screen
