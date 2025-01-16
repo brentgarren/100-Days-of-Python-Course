@@ -20,5 +20,5 @@
 # with open(r"C:\Users\brent\OneDrive\Desktop\Python Coding Learning\100 days Challenge\100-Days-of-Python-Course\Intermediate_day15-44\Day 24 Read and write\myfile.txt", "a") as file:
 #     file.write("\nnew text.")
 
-# with open("new_file1.txt", mode="w") as file:
-#     file.write("Hello")
+with open("new_file1.txt", mode="w") as file:
+    file.write("Hello")
