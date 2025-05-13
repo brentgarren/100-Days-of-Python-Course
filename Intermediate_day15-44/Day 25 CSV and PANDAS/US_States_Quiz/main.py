@@ -31,6 +31,7 @@ while len(guessed_states) < 50:
         turtle.goto(state_data.x.item(), state_data.y.item())
         turtle.write(answer)
     if answer == "Exit":
+        states_to_learn = [state for state in list_of_states if state not in guessed_states]
         for state in list_of_states:
             if state not in guessed_states:
                 states_to_learn.append(state)
